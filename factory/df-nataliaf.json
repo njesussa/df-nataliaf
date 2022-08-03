@@ -1,0 +1,9 @@
+{
+	"name": "df-nataliaf",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fb5c2625-0cb3-41d1-955f-327f44a0a90d",
+		"tenantId": "a49e2ad8-3b8d-40e8-8c45-1505c9a243d3"
+	}
+}
