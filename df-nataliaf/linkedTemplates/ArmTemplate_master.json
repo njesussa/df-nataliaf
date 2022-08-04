@@ -7,13 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "df-nataliaf"
 		},
-		"lsnataliaf_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://datalakenataliaf.dfs.core.windows.net/"
-		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://kv-nataliaf.vault.azure.net/"
+		},
+		"lsnataliaf_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakenataliaf.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",

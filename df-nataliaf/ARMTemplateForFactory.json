@@ -7,56 +7,19 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "df-nataliaf"
 		},
-		"lsnataliaf_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://datalakenataliaf.dfs.core.windows.net/"
-		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://kv-nataliaf.vault.azure.net/"
+		},
+		"lsnataliaf_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakenataliaf.dfs.core.windows.net/"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/lsnataliaf')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('lsnataliaf_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "ls_key_vault",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "storage-key",
-						"secretVersion": "7223723737d74500814c4ca7e33b472f"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ls_key_vault')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureKeyVault",
-				"typeProperties": {
-					"baseUrl": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
-				}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/adf_copy_csv_raw')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -215,6 +178,43 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ls_key_vault')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('ls_key_vault_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/lsnataliaf')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('lsnataliaf_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "ls_key_vault",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "storage-key",
+						"secretVersion": "7223723737d74500814c4ca7e33b472f"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_key_vault')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/trigger_carros')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -236,7 +236,7 @@
 						"frequency": "Minute",
 						"interval": 5,
 						"startTime": "2022-08-04T09:44:00Z",
-						"endTime": "2022-08-05T10:44:00Z",
+						"endTime": "2022-08-05T12:44:00Z",
 						"timeZone": "UTC"
 					}
 				}

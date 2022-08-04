@@ -5,11 +5,11 @@
 		"factoryName": {
 			"value": "df-nataliaf"
 		},
-		"lsnataliaf_properties_typeProperties_url": {
-			"value": "https://datalakenataliaf.dfs.core.windows.net/"
-		},
 		"ls_key_vault_properties_typeProperties_baseUrl": {
 			"value": "https://kv-nataliaf.vault.azure.net/"
+		},
+		"lsnataliaf_properties_typeProperties_url": {
+			"value": "https://datalakenataliaf.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""
