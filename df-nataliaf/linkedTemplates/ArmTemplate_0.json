@@ -124,7 +124,8 @@
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
-					"quoteChar": "\""
+					"firstRowAsHeader": true,
+					"quoteChar": "'"
 				},
 				"schema": []
 			},
@@ -170,7 +171,7 @@
 								"formatSettings": {
 									"type": "DelimitedTextWriteSettings",
 									"quoteAllText": true,
-									"fileExtension": ".txt"
+									"fileExtension": ".csv"
 								}
 							},
 							"enableStaging": false,
